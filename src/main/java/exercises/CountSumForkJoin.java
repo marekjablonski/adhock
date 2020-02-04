@@ -16,6 +16,16 @@ public class CountSumForkJoin {
         System.out.println(result);
     }
 
+    static long aVeryBigSum(long[] ar) {
+        long    accumulator=0;
+        for(int i=0; i<ar.length;i++){
+            accumulator+=ar[i];
+        }
+        return accumulator;
+    }
+
+
+
     public static class SumNumberTask extends RecursiveTask<Integer> {
         private List<Integer> inputToSum;
 
