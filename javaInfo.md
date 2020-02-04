@@ -92,6 +92,8 @@ To abstract thread management from the rest of your application, pass the applic
 This section documents the use of Thread objects. Executors are discussed with other high-level concurrency
 
 
+Java 8
+CompletableFuture
 
 
 NON JAVA

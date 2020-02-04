@@ -1,0 +1,94 @@
+
+PUT schools
+GET school
+HEAD schoolx
+
+Flush similar to commit??
+GET /_nodes/_local
+
+POST schools/_doc/10
+{
+   "name":"Saint Paul School", "description":"ICSE Afiliation",
+   "street":"Dawarka", "city":"Delhi", "state":"Delhi", "zip":"110075",
+   "location":[28.5733056, 77.0122136], "fees":5000,
+   "tags":["Good Faculty", "Great Sports"], "rating":"4.5"
+}
+POST schools/_doc/
+{
+   "name":"Crescent School", "description":"State Board Affiliation",
+   "street":"Tonk Road",
+   "city":"Jaipur", "state":"RJ", "zip":"176114","location":[26.8535922,75.7923988],
+   "fees":2500, "tags":["Well equipped labs"], "rating":"4.5"
+}
+
+POST /school/_search?pretty=true
+ GET school/_doc/23
+ GET school/_doc/23?_source_includes=name,fees
+ DELETE school/_doc/4
+ POST school/_update/4
+{
+   "script" : {
+      "source": "ctx._source.name = params.sname",
+      "lang": "painless",
+      "params" : {
+         "sname" : "City Wise School"
+      }
+   }
+ }
+
+ GET /_all/_search?q=city:Delhi
+
+POST /schools/_search?size=0
+{
+   "aggs":{
+      "avg_feesmj":{"avg":{"field":"fees"}}
+   }
+}
+
+POST /schools/_search?size=0
+{
+   "aggs" : {
+      "grades_stats" : { "stats" : { "field" : "fees" } }
+   }
+}
+
+POST /schools/_search
+{
+   "query":{
+      "match_all":{}
+   }
+}
+
+
+POST /school*/_search
+{
+   "query":{
+      "match" : {
+         "rating":"4.5"
+      }
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
