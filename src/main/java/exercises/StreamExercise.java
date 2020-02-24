@@ -14,64 +14,62 @@ import java.util.stream.*;
 import static java.lang.Math.abs;
 import static java.util.stream.Collectors.*;
 
+
+
 public class StreamExercise {
+    public static void main(String[] args) {
+        final Integer age;
 
-    public static int diagonalDifference(List<List<Integer>> arr) {
-        int sumDiagonal = 0;
-        int arraySize = arr.get(0).size();
+       age=123;
+      // age=344;
 
-        for (int i = 0; i < arr.get(0).size(); i++) {
-            sumDiagonal=sumDiagonal+arr.get(i).get(i)-arr.get(i).get(arraySize-i-1);
-        }
-        return sumDiagonal>0 ? sumDiagonal : -sumDiagonal;
+        Optional<String> result =  Stream.of("bb", "c", "d")
+                .collect(maxBy(Comparator.naturalOrder()));
+
+        List<Integer> ints1 = IntStream.of(3, 1, 4, 1, 5, 9)
+                //   .collect(Collectors.toList());
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+        List<Integer> ints2 = IntStream.of(3, 1, 4, 1, 5, 9)
+                .boxed()
+                .collect(Collectors.toList());
+        List<Integer> ints4 = IntStream.of(3, 1, 4, 1, 5, 9)
+                //   .collect(Collectors.toList());
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+        List<Integer> ints3 = Stream.of(3, 1, 4, 1, 5, 9)
+                .collect(Collectors.toList());
+
+
+//        List<String> resultCollectingAndThen = Stream.of("bb", "c", "d")
+//                .collect(collectingAndThen(toList(), ImmutableList::copyOf));
+
+
+        String[] list= new  String[3];
+        Object[] obj =list;
+
+
+
+
+
+        List<String> listWithDuplicates2 = Arrays.asList("a", "bb", "c", "d", "bb");
+        List<String> listWithDuplicates = Arrays.asList("a", "bb", "c", "d", "bb");
+        Set<String> result12 = listWithDuplicates.stream().collect(toSet());
+        HashSet<String> resultHashSet = (HashSet<String>) listWithDuplicates.stream().collect(toSet());
+        TreeSet<String> resultTreeSet = (TreeSet<String>) listWithDuplicates.stream().collect(toSet());
+       // TreeSet<String> resultTreeSet2 = listWithDuplicates.stream().collect(Collectors.toCollection(TreeSet::new));
+        System.out.printf(resultHashSet.toString());
+        System.out.printf(result.toString());
+
+////MAP
+
+        Map<String, Integer> resultMap = listWithDuplicates.stream()
+                .collect(toMap(Function.identity(), String::length, (item, identicalItem) -> item));
+
+
+
     }
 
-    // Complete the compareTriplets function below.
-    static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
-        int aBigerCount = 0;
-        int bBigerCount = 0;
-
-        for (int i = 0; i < 3; i++) {
-            if (a.get(i) > b.get(i)) {
-                aBigerCount++;
-            } else if (a.get(i) < b.get(i)) {
-                bBigerCount++;
-            }
-        }
-        return Arrays.asList(aBigerCount, bBigerCount);
-    }
-
-    public static void main(String[] args) throws IOException {
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-//
-//        List<Integer> a = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-//                .map(Integer::parseInt)
-//                .collect(toList());
-//
-//        List<Integer> b = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-//                .map(Integer::parseInt)
-//                .collect(toList());
-//
-//        List<Integer> result = compareTriplets(a, b);
-//
-//        bufferedWriter.write(
-//                result.stream()
-//                        .map(Object::toString)
-//                        .collect(joining(" "))
-//                        + "\n"
-//        );
-//
-//        bufferedReader.close();
-//        bufferedWriter.close();
-
-        List<Integer> testList=Arrays.asList(1,3,3);
-        System.out.println(testList.size());
-        List<Integer> testList2=Arrays.asList(4,2,1);
-        List<Integer> testList3=Arrays.asList(4,2,1);
-        int a=diagonalDifference(Arrays.asList(testList,testList2,testList3));
-        System.out.printf("ruznieca:"+a);
-  }
 }
 
 

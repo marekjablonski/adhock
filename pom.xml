@@ -7,6 +7,17 @@
     <groupId>com.luxoft</groupId>
     <artifactId>rekrutacja</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>5.4.2</version>
+        <scope>test</scope>
+    </dependency>
+
+    </dependencies>
+
+
 
     <build>
     <plugins>
@@ -14,8 +25,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
+                <source>1.11</source>
+                <target>1.11</target>
             </configuration>
         </plugin>
     </plugins>
